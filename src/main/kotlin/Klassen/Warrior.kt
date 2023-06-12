@@ -1,0 +1,4 @@
+package Klassen
+
+class Warriot {
+}
