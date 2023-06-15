@@ -8,5 +8,14 @@ open class Held(val name: String, var HP: Int) {
 
     }
 
+    fun heal(heal: Int) {
+
+    }
+
+
+}
+fun zeigeHelden(charList: List<Held>){
+    for(i in 1..charList.size)
+        println("$i : ${charList[i-1].name}")
 
 }

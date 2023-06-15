@@ -45,16 +45,36 @@ open class Priest(name: String, HP: Int) : Held(name, HP) {
         bossLP(boss, schaden)
     }
 
-    fun heilung(held: Held) {
-        var heal = (350..400).random()
-        println("${::heilung.name.uppercase()} wurde eingesetzt.")
-        if (held.HP < 0) {
-            println("Heilung in Höhe von $heal ist eingegangen!")
-            held.HP = held.HP + heal
+//    fun heilung(held: Held) {
+//        var heal = (350..400).random()
+//        println("${::heilung.name.uppercase()} wurde eingesetzt.")
+//
+//    }
+
+    fun heilung(charList:List<Held>) {
+        val heal = (200..300).random()
+        println("Welchen Helden willst du Heilen?")
+        zeigeHelden(charList)
+        val input = readln()
+        val ausgewaehlterHeal = when (input) {
+            "1" -> charList[0]
+            "2" -> charList[1]
+            "3" -> charList[2]
+            else -> null
+        }
+        if (ausgewaehlterHeal != null) {
+            if (ausgewaehlterHeal.HP < 0) {
+                println("Heilung in Höhe von $heal ist eingegangen!")
+                ausgewaehlterHeal.HP += heal
+                println("Heilung auf ${ausgewaehlterHeal.name} einsetzte mit $heal.")
+            } else {
+                println("${ausgewaehlterHeal.name} hat bereits volles Leben!")
+            }
         } else {
-            println("${held.name} hat bereits volles Leben!")
+            println("Falsche Eingabe")
         }
     }
 
 
-}
+
+    }

@@ -9,8 +9,9 @@ fun main() {
 
     var aktuellerSpielerIndex = 0
     var aktuelleRunde = 0
-    var boss = Boss("Lichking", 10000)
+    val boss = Boss("Lichking", 10000)
     val heldenTod = false
+
 
     while (boss.HP > 0 && !heldenTod) {
         println("---------- Runde ${aktuelleRunde + 1}: ---------\n")
@@ -46,7 +47,7 @@ fun main() {
                     "1" -> aktuellerSpieler.gedankenschlag(boss)
                     "2" -> aktuellerSpieler.verschlingendeSeuche(boss)
                     "3" -> aktuellerSpieler.heiligerPein(boss)
-                    "4" -> aktuellerSpieler.heilung(aktuellerSpieler)
+                    "4" -> aktuellerSpieler.heilung(charListe)
                     else -> println("Falsche Eingabe")
                 }
             }

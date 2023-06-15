@@ -19,8 +19,7 @@ open class Mage(name: String, HP: Int) : Held(name, HP) {
         )
     }
 
-    fun feuerball(boss: Boss) {1
-
+    fun feuerball(boss: Boss) {
         var schaden = (200..250).random()
         println("${::feuerball.name.uppercase()} wurde eingesetzt. Es macht $schaden Schaden gegen ${boss.name}")
         bossLP(boss, schaden)
@@ -47,8 +46,6 @@ open class Mage(name: String, HP: Int) : Held(name, HP) {
             println("Attacke kann erst eingesetz werden wenn der  ${boss.name} min. 20% leben hat.")
         }
     }
-
-
 }
 
 

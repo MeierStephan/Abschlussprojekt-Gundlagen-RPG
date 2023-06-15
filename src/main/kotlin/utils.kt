@@ -11,11 +11,3 @@ fun bossLP(boss: Boss, schaden: Int) {
 fun ANGRIFF_TIMER() {
     Thread.sleep(1000)
 }
-
-
-
-
-
-
-
-

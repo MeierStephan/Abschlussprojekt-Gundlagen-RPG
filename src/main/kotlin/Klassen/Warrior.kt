@@ -19,7 +19,7 @@ open class Warrior(name: String, HP: Int) : Held(name, HP) {
 
 
     fun blutdurst(boss: Boss) {
-        var schaden = (200..250).random()
+        val schaden = (200..250).random()
         val heal = schaden / 100 * 10
         println("${::blutdurst.name.uppercase()} wurde eingesetzt. Es macht $schaden Schaden gegen ${boss.name}")
         if (this.HP > 0) {
@@ -32,7 +32,7 @@ open class Warrior(name: String, HP: Int) : Held(name, HP) {
     }
 
     fun wuetenderSchlag(boss: Boss) {
-        var schaden = (250..350).random()
+        val schaden = (250..350).random()
         println("${::wuetenderSchlag.name.uppercase()} Schlag wurde eingesetzt. Es macht $schaden Schaden gegen ${boss.name}")
         bossLP(boss, schaden)
     }
