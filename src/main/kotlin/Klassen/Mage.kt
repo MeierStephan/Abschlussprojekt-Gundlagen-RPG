@@ -15,6 +15,7 @@ open class Mage(name: String, HP: Int) : Held(name, HP) {
             2. Pyroblast
             3. Versengen (ab 20 %)
             4. Frostblitz
+            i . Inventar
         """.trimIndent()
         )
     }

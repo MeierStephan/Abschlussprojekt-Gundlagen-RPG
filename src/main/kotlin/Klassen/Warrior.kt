@@ -13,6 +13,7 @@ open class Warrior(name: String, HP: Int) : Held(name, HP) {
             2. Wütender Schlag
             3. Hinrichten (ab 20%)
             4. Zerschmettern
+            i. Inventar 
         """.trimIndent()
         )
     }

@@ -14,6 +14,7 @@ open class Priest(name: String, HP: Int) : Held(name, HP) {
             2. Verschlingende Seuche
             3. Heiliger Pein
             4. Heilung
+            i. Inventar
         """.trimIndent()
         )
     }

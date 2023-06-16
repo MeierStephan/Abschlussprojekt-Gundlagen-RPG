@@ -1,16 +1,23 @@
 import Klassen.*
 
 fun main() {
-
+// Anlegen einer leeren Liste wo Helden hinzugefügt werden.
     val charListe: MutableList<Held> = mutableListOf()
     charListe.add(Mage("Medivh", 2500))
     charListe.add(Warrior("Garrosh", 6000))
     charListe.add(Priest("Anduin", 3000))
-
+// Definieren des SpielerIndex der am anfang auf 0 ist
+// Definieren der aktuellen Runde die am Anfang auf 0 ist
+// Erstellen des Bosses
+//
     var aktuellerSpielerIndex = 0
     var aktuelleRunde = 0
     val boss = Boss("Lichking", 10000)
     val heldenTod = false
+
+    val inventar : MutableList<Item> = mutableListOf()
+    inventar.add(Item("Heiltrank",20,300))
+
 
 
     while (boss.HP > 0 && !heldenTod) {
@@ -28,6 +35,13 @@ fun main() {
                     "2" -> aktuellerSpieler.pyroblast(boss)
                     "3" -> aktuellerSpieler.versengen(boss)
                     "4" -> aktuellerSpieler.frostblitz(boss)
+                    "i" ->  {
+                        println("Inventar:")
+                        for (i in inventar.indices)
+                            println("$i ${inventar[i]}")
+
+
+                    }
                     else -> println("Falsche Eingabe!")
                 }
             }
