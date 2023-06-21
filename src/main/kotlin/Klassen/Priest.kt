@@ -1,10 +1,10 @@
 package Klassen
 
-import ANGRIFF_TIMER
+
 import bossLP
 
 // Mittel Leben und mittel schaden, mit Heilungszauber
-open class Priest(name: String, HP: Int) : Held(name, HP) {
+open class Priest(name: String, HP: Int,maxHP:Int) : Held(name, HP,maxHP) {
 
     override fun zeigeAngriffe() {
         super.zeigeAngriffe()
@@ -20,37 +20,33 @@ open class Priest(name: String, HP: Int) : Held(name, HP) {
     }
 
     fun gedankenschlag(boss: Boss) {
-        var schaden = (200..250).random()
+        val schaden = (200..250).random()
         boss.HP = boss.HP - schaden
         println("${::gedankenschlag.name.uppercase()} wurde eingesetzt. Es macht $schaden Schaden gegen ${boss.name}")
         bossLP(boss, schaden)
     }
 
     fun verschlingendeSeuche(boss: Boss) {
-        var schaden = (250..350).random()
+        val schaden = (250..350).random()
         val heal = schaden / 100 * 10
-        HP += heal
         println("${::verschlingendeSeuche.name.uppercase()}wurde eingesetzt. Es macht $schaden Schaden gegen ${boss.name}")
-        if (this.HP > 0) {
-            println("Dein Leben ist bereits voll.")
-        } else {
+        if (this.HP < this.maxHP){
             println("Du wurdest um $heal geheilt!")
+            HP += heal
+        } else {
+            println("Dein Leben ist bereits voll.")
         }
         bossLP(boss, schaden)
     }
 
     fun heiligerPein(boss: Boss) {
-        var schaden = (200..250).random()
+        val schaden = (200..250).random()
         boss.HP = boss.HP - schaden
         println("${::heiligerPein.name.uppercase()} wurde eingesetzt. Es macht $schaden Schaden gegen ${boss.name}")
         bossLP(boss, schaden)
     }
 
-//    fun heilung(held: Held) {
-//        var heal = (350..400).random()
-//        println("${::heilung.name.uppercase()} wurde eingesetzt.")
-//
-//    }
+
 
     fun heilung(charList:List<Held>) {
         val heal = (200..300).random()
@@ -64,10 +60,11 @@ open class Priest(name: String, HP: Int) : Held(name, HP) {
             else -> null
         }
         if (ausgewaehlterHeal != null) {
-            if (ausgewaehlterHeal.HP < 0) {
+            if (ausgewaehlterHeal.HP < ausgewaehlterHeal.maxHP) {
                 println("Heilung in Höhe von $heal ist eingegangen!")
                 ausgewaehlterHeal.HP += heal
-                println("Heilung auf ${ausgewaehlterHeal.name} einsetzte mit $heal.")
+                println("${ausgewaehlterHeal.name}: ${ausgewaehlterHeal.HP}")
+//                println("Heilung auf ${ausgewaehlterHeal.name} einsetzte mit $heal.")
             } else {
                 println("${ausgewaehlterHeal.name} hat bereits volles Leben!")
             }

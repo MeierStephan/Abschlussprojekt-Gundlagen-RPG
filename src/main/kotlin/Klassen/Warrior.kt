@@ -1,9 +1,10 @@
 package Klassen
 
-import ANGRIFF_TIMER
-import bossLP
 
-open class Warrior(name: String, HP: Int) : Held(name, HP) {
+import bossLP
+import minBossHP
+
+open class Warrior(name: String, HP: Int, maxHP:Int ) : Held(name, HP, maxHP) {
 
     override fun zeigeAngriffe() {
         super.zeigeAngriffe()
@@ -23,13 +24,13 @@ open class Warrior(name: String, HP: Int) : Held(name, HP) {
         val schaden = (200..250).random()
         val heal = schaden / 100 * 10
         println("${::blutdurst.name.uppercase()} wurde eingesetzt. Es macht $schaden Schaden gegen ${boss.name}")
-        if (this.HP > 0) {
-            println("Dein Leben ist bereits voll.")
-        } else {
+        if (this.HP < this.maxHP) {
             println("Du wurdest um $heal geheilt!")
             HP += heal
+        } else {
+            println("Dein Leben ist bereits voll.")
+            bossLP(boss, schaden)
         }
-        bossLP(boss, schaden)
     }
 
     fun wuetenderSchlag(boss: Boss) {
@@ -40,7 +41,7 @@ open class Warrior(name: String, HP: Int) : Held(name, HP) {
 
     fun hinrichten(boss: Boss) {
         var schaden = (400..500).random()
-        if (boss.HP > boss.HP / 100 * 20) {
+        if (boss.HP < minBossHP(boss)) {
             println("${::hinrichten.name.uppercase()} wurde eingesetz. Es macht $schaden Schaden gegen den ${boss.name}")
             bossLP(boss, schaden)
         } else {
@@ -50,7 +51,6 @@ open class Warrior(name: String, HP: Int) : Held(name, HP) {
 
     fun zerschmettern(boss: Boss) {
         var schaden = (200..300).random()
-        ANGRIFF_TIMER()
         println("${::zerschmettern.name.uppercase()} wurde eingesetzt. Es macht $schaden Schaden gegen den ${boss.name}")
         bossLP(boss, schaden)
     }

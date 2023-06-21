@@ -1,17 +1,12 @@
 package Klassen
 
-open class Held(val name: String, var HP: Int) {
+open class Held(val name: String, var HP: Int, val maxHP :Int) {
 
 
-    open fun zeigeAngriffe() {
+open fun zeigeAngriffe() {
         println("$name, welche Attacke willst du auswählen?\n")
 
     }
-
-    fun heal(heal: Int) {
-
-    }
-
 
 }
 fun zeigeHelden(charList: List<Held>){

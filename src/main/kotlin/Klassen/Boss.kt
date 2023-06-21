@@ -1,45 +1,45 @@
 package Klassen
 
-open class Boss(var name: String, var HP: Int) {
+open class Boss(var name: String, var HP: Int, val bossMaxHP :Int) {
 
 
-    val bossLebenMax = 10000
-    fun auslöschen(charList: List<Held>) {
-        val schaden = (200..300).random()
-        val zufälligerHeld = charList.random()
-        zufälligerHeld.HP -= schaden
-        println("$name setzt ${::auslöschen.name.uppercase()} ein!")
-        println("$name hat ${zufälligerHeld.name} $schaden hinzugefügt")
-        println("${zufälligerHeld.name} hat noch ${zufälligerHeld.HP}")
+
+    fun ausloeschen(charList: List<Held>) {
+        val schaden = (200..2000).random()
+        val zufaelligerHeld = charList.random()
+        zufaelligerHeld.HP -= schaden
+        println("$name setzt ${::ausloeschen.name.uppercase()} ein!")
+        println("$name hat ${zufaelligerHeld.name} $schaden hinzugefügt")
+        println("${zufaelligerHeld.name} hat noch ${zufaelligerHeld.HP}")
     }
 
     fun nahkampf(charList: List<Held>) {
-        val schaden = (150..200).random()
-        val zufälligerHeld = charList.random()
-        zufälligerHeld.HP -= schaden
+        val schaden = (150..2000).random()
+        val zufaelligerHeld = charList.random()
+        zufaelligerHeld.HP -= schaden
         println("$name setzt ${::nahkampf.name.uppercase()} ein!")
-        println("$name hat ${zufälligerHeld.name} $schaden hinzugefügt")
-        println("${zufälligerHeld.name} hat noch ${zufälligerHeld.HP}")
+        println("$name hat ${zufaelligerHeld.name} $schaden hinzugefügt")
+        println("${zufaelligerHeld.name} hat noch ${zufaelligerHeld.HP}")
     }
 
     fun froststoß(charList: List<Held>) {
-        val schaden = (200..300).random()
-        val zufälligerHeld = charList.random()
-        zufälligerHeld.HP -= schaden
+        val schaden = (200..2000).random()
+        val zufaelligerHeld = charList.random()
+        zufaelligerHeld.HP -= schaden
         println("$name setzt ${::froststoß.name.uppercase()} ein!")
-        println("$name hat ${zufälligerHeld.name} $schaden hinzugefügt")
-        println("${zufälligerHeld.name} hat noch ${zufälligerHeld.HP}")
+        println("$name hat ${zufaelligerHeld.name} $schaden hinzugefügt")
+        println("${zufaelligerHeld.name} hat noch ${zufaelligerHeld.HP}")
 
     }
 
     fun heilung(boss: Boss) {
         val heal = (150..200).random()
         println("$name setzt ${::heilung.name.uppercase()} ein")
-        if (this.HP > 0) {
-            println("Dein Leben ist bereits voll.")
-        } else {
+        if (this.HP < this.bossMaxHP) {
             println("Du wurdest um $heal geheilt!")
             boss.HP += heal
+        } else {
+            println("Dein Leben ist bereits voll.")
         }
     }
 
@@ -49,4 +49,7 @@ open class Boss(var name: String, var HP: Int) {
         println("$name setzt ${::schield.name.uppercase()} ein")
     }
 
+    fun helferBeschwoeren(){
+
+    }
 }

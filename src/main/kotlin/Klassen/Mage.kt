@@ -1,10 +1,9 @@
 package Klassen
-
-import ANGRIFF_TIMER
 import bossLP
+import minBossHP
 
-// Wenig leben aber mehr schaden
-open class Mage(name: String, HP: Int) : Held(name, HP) {
+
+open class Mage(name: String, HP: Int,maxHP:Int) : Held(name, HP,maxHP) {
 
 
     override fun zeigeAngriffe() {
@@ -40,7 +39,7 @@ open class Mage(name: String, HP: Int) : Held(name, HP) {
 
     fun versengen(boss: Boss) {
         var schaden = (400..500).random()
-        if (boss.HP > boss.HP / 100 * 20) {
+        if (boss.HP < minBossHP(boss)) {
             println("${::versengen.name.uppercase()}wurde eingesetz. Es macht $schaden Schaden gegen den ${boss.name}")
             bossLP(boss, schaden)
         } else {
