@@ -22,14 +22,14 @@ open class Priest(name: String, HP: Int,maxHP:Int) : Held(name, HP,maxHP) {
     fun gedankenschlag(boss: Boss) {
         val schaden = (200..250).random()
         boss.HP = boss.HP - schaden
-        println("${::gedankenschlag.name.uppercase()} wurde eingesetzt. Es macht $schaden Schaden gegen ${boss.name}")
+        println("${::gedankenschlag.name.uppercase()} wurde eingesetzt. Es macht ${red}$schaden Schaden ${black} gegen ${boss.name}")
         bossLP(boss, schaden)
     }
 
     fun verschlingendeSeuche(boss: Boss) {
         val schaden = (250..350).random()
         val heal = schaden / 100 * 10
-        println("${::verschlingendeSeuche.name.uppercase()}wurde eingesetzt. Es macht $schaden Schaden gegen ${boss.name}")
+        println("${::verschlingendeSeuche.name.uppercase()}wurde eingesetzt. Es macht ${red}$schaden Schaden ${black} gegen ${boss.name}")
         if (this.HP < this.maxHP){
             println("Du wurdest um $heal geheilt!")
             HP += heal
@@ -42,7 +42,7 @@ open class Priest(name: String, HP: Int,maxHP:Int) : Held(name, HP,maxHP) {
     fun heiligerPein(boss: Boss) {
         val schaden = (200..250).random()
         boss.HP = boss.HP - schaden
-        println("${::heiligerPein.name.uppercase()} wurde eingesetzt. Es macht $schaden Schaden gegen ${boss.name}")
+        println("${::heiligerPein.name.uppercase()} wurde eingesetzt. Es macht ${red}$schaden Schaden ${black} gegen ${boss.name}")
         bossLP(boss, schaden)
     }
 

@@ -1,5 +1,10 @@
 import Klassen.*
 
+
+// Leere liste für das Inventar erstellt
+val inventar: MutableList<Item> = mutableListOf()
+// Heiltrank dem Inventar hinzugefügt
+
 fun main() {
     // Leere liste für die Helden erstellt
     val charListe: MutableList<Held> = mutableListOf()
@@ -9,14 +14,11 @@ fun main() {
     charListe.add(Warrior("Garrosh", 6000,6000))
     charListe.add(Priest("Anduin", 3000,3000))
 
-    // Leere liste für das Inventar erstellt
-    val inventar: MutableList<Item> = mutableListOf()
-    // Heiltrank dem Inventar hinzugefügt
-    inventar.add(Item("Heiltrank", 20, 300))
-    inventar.add(Item("Vitamine",5))
-
     // Boss erstellt
     val boss = Boss("Lichking", 10000,10000)
+
+    inventar.add(Item("Heiltrank", 20, 300))
+    inventar.add(Item("Vitamine",5))
 
     // runden Zähler erstellt
     var aktuelleRunde = 0
@@ -52,7 +54,7 @@ fun main() {
                                 inventarZeigen(inventar)
                                 itemAuswahl(inventar,aktuellerSpieler)
                             }
-                            else -> println("Falsche Eingabe!")
+                            else -> println("Falsche Eingabe! Der nächste Held ist an der Reihe.")
                         }
                     }
 
@@ -66,7 +68,7 @@ fun main() {
                                 inventarZeigen(inventar)
                                 itemAuswahl(inventar,aktuellerSpieler)
                             }
-                            else -> println("Falsche Eingabe!")
+                            else -> println("Falsche Eingabe! Der nächste Held ist an der Reihe.")
                         }
                     }
 
@@ -80,7 +82,7 @@ fun main() {
                                 inventarZeigen(inventar)
                                 itemAuswahl(inventar,aktuellerSpieler)
                             }
-                            else -> println("Falsche Eingabe!")
+                            else -> println("Falsche Eingabe! Der nächste Held ist an der Reihe.")
                         }
                     }
                 }
@@ -96,14 +98,15 @@ fun main() {
             val heldenAmLeben = charListe.filter { it.HP > 0 }
 
             // Random Angriff vom boss wird gemacht
-            val bossAngriffIndex = (1..5).random()
+            val bossAngriffIndex = (1..100).random()
             println("----- BOSS Angriff -----")
             when (bossAngriffIndex) {
-                1 -> boss.ausloeschen(heldenAmLeben)
-                2 -> boss.nahkampf(heldenAmLeben)
-                3 -> boss.froststoß(heldenAmLeben)
-                4 -> boss.schield(boss)
-                5 -> boss.heilung(boss)
+                in 1..20 -> boss.ausloeschen(heldenAmLeben)
+                in 21..40 -> boss.nahkampf(heldenAmLeben)
+                in 41..60 -> boss.froststoß(heldenAmLeben)
+                in 61..70 -> boss.schield(boss)
+                in 71..80 -> boss.heilung(boss)
+                in 81..100 -> boss.heulendeBoee(heldenAmLeben)
             }
             // Leben aller Helden wird ausgedruckt
             println()

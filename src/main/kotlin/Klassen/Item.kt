@@ -3,4 +3,7 @@ package Klassen
 open class Item(var name: String, var anzahl: Int,var heilungsWert: Int? = null) {
 
 
+    constructor(name:String,anzahl: Int):this(name,anzahl,null)
+
+
 }
