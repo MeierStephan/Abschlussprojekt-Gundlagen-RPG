@@ -34,7 +34,7 @@ open class Priest(name: String, HP: Int,maxHP:Int) : Held(name, HP,maxHP) {
         val heal = schaden / 100 * 10
         println("${::verschlingendeSeuche.name.uppercase()}wurde eingesetzt. Es macht ${red}$schaden Schaden ${black} gegen ${boss.name}")
         if (this.HP < this.maxHP){
-            println("Du wurdest um $heal geheilt!")
+            println("Du wurdest um ${green}$heal geheilt!${black}")
             HP += heal
         } else {
             println("Dein Leben ist bereits voll.")
@@ -64,10 +64,9 @@ open class Priest(name: String, HP: Int,maxHP:Int) : Held(name, HP,maxHP) {
         }
         if (ausgewaehlterHeal != null) {
             if (ausgewaehlterHeal.HP < ausgewaehlterHeal.maxHP) {
-                println("Heilung in Höhe von $heal ist eingegangen!")
+                println("Heilung in Höhe von ${green}$heal${black} ist eingegangen!")
                 ausgewaehlterHeal.HP += heal
-                println("${ausgewaehlterHeal.name}: ${ausgewaehlterHeal.HP}")
-//                println("Heilung auf ${ausgewaehlterHeal.name} einsetzte mit $heal.")
+                println("${ausgewaehlterHeal.name}: ${ausgewaehlterHeal.HP} LP")
             } else {
                 println("${ausgewaehlterHeal.name} hat bereits volles Leben!")
             }

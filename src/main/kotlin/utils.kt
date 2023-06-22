@@ -8,15 +8,14 @@ val black = "\u001B[0m"
 // Leben des Bosses wird in % angezeigt
 // Schaden der Attacken wird von den HP des Bosses abgezogen
 fun bossLP(boss: Boss, schaden: Int) {
-    var bossLebenInProzent = (boss.HP.toDouble() / boss.bossMaxHP) * 100
     boss.HP -= schaden
-    bossLebenInProzent = (boss.HP.toDouble() / boss.bossMaxHP) * 100
+    val bossLebenInProzent = (boss.HP.toDouble() / boss.bossMaxHP) * 100
     println("Der ${boss.name} hat noch ${bossLebenInProzent.roundToInt()}%\n")
 }
 
-    var buffMage = false
-    var buffWarrior = false
-    var buffPriest = false
+var buffMage = false
+var buffWarrior = false
+var buffPriest = false
 fun itemBenutzen(item: Item, held: Held) {
     if (item.heilungsWert != null) {
         if (held.HP < held.maxHP) {
@@ -31,29 +30,29 @@ fun itemBenutzen(item: Item, held: Held) {
             println("${held.name} hat bereits Volles Leben")
         }
     } else if (buffMage == false) {
-            if (item.name == "Vitamine") {
-                val buff = (held.maxHP * 0.1).toInt()
-                println("${green}${held.name} hat Vitamine benutzt. Sein leben wird um 10% erhöht!${black}")
-                held.HP += buff
-                item.anzahl--
-                held.maxHP = held.HP
-                buffMage = true
-            }
+        if (item.name == "Vitamine") {
+            val buff = (held.maxHP * 0.1).toInt()
+            println("${green}${held.name} hat Vitamine benutzt. Sein leben wird um 10% erhöht!${black}")
+            held.HP += buff
+            item.anzahl--
+            held.maxHP = held.HP
+            buffMage = true
+        }
 
-            if (item.anzahl == 0) {
-                inventar.remove(item)
-            }
-        } else if (buffPriest == false){
-            if (item.name == "Vitamine") {
-                val buff = (held.maxHP * 0.1).toInt()
-                println("${green}${held.name} hat Vitamine benutzt. Sein leben wird um 10% erhöht!${black}")
-                held.HP += buff
-                item.anzahl--
-                held.maxHP = held.HP
-                buffPriest = true
-            }
+        if (item.anzahl == 0) {
+            inventar.remove(item)
+        }
+    } else if (buffPriest == false) {
+        if (item.name == "Vitamine") {
+            val buff = (held.maxHP * 0.1).toInt()
+            println("${green}${held.name} hat Vitamine benutzt. Sein leben wird um 10% erhöht!${black}")
+            held.HP += buff
+            item.anzahl--
+            held.maxHP = held.HP
+            buffPriest = true
+        }
 
-        } else if (buffWarrior == false) {
+    } else if (buffWarrior == false) {
         if (item.name == "Vitamine") {
             val buff = (held.maxHP * 0.1).toInt()
             println("${green}${held.name} hat Vitamine benutzt. Sein leben wird um 10% erhöht!${black}")
@@ -74,7 +73,7 @@ fun inventarZeigen(inventar: List<Item>) {
     println("Inventar:")
     for (i in inventar.indices) {
         val item = inventar[i]
-        // Wenn der Heilungswert des Items nicht null ist wir dieser in der Konstanten heilungswertText gespeichert
+        // Wenn der Heilungswert des Items nicht null ist, wird dieser in der Konstanten heilungswertText gespeichert
         val heilungswertText = if (item.heilungsWert != null) "Heilung: ${item.heilungsWert} LP"
         else ""
         // Inventar wird ausgegeben mit i = nummer, anzahl = wv. items , heilungswert = Heilung bei Tränken. Wenn keiner vorhanden wird dieser nicht ausgegeben.

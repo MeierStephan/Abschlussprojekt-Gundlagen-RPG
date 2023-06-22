@@ -1,6 +1,6 @@
 package Klassen
 
-open class Held(val name: String, var HP: Int, var maxHP :Int) {
+open class Held(val name: String, var HP: Int, var maxHP: Int) {
 
 
     open fun zeigeAngriffe() {

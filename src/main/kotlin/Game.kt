@@ -10,15 +10,15 @@ fun main() {
     val charListe: MutableList<Held> = mutableListOf()
 
     // Hinzufügen von Helden in der Liste
-    charListe.add(Mage("Medivh", 2500,2500))
-    charListe.add(Warrior("Garrosh", 6000,6000))
-    charListe.add(Priest("Anduin", 3000,3000))
+    charListe.add(Mage("Medivh", 2500, 2500))
+    charListe.add(Warrior("Garrosh", 6000, 6000))
+    charListe.add(Priest("Anduin", 3000, 3000))
 
     // Boss erstellt
-    val boss = Boss("Lichking", 10000,10000)
+    val boss = Boss("Lichking", 10000, 10000)
 
     inventar.add(Item("Heiltrank", 20, 300))
-    inventar.add(Item("Vitamine",5))
+    inventar.add(Item("Vitamine", 5))
 
     // runden Zähler erstellt
     var aktuelleRunde = 0
@@ -27,7 +27,7 @@ fun main() {
         println("---------- Runde ${aktuelleRunde + 1}: ---------\n")
 
         // für jeden held in der charliste
-        for (held in charListe.size -1 downTo 0) {
+        for (held in charListe.size - 1 downTo 0) {
             val aktuellerSpieler = charListe[held]
 
             if (aktuellerSpieler.HP <= 0) {
@@ -52,8 +52,9 @@ fun main() {
                             "4" -> aktuellerSpieler.frostblitz(boss)
                             "i" -> {
                                 inventarZeigen(inventar)
-                                itemAuswahl(inventar,aktuellerSpieler)
+                                itemAuswahl(inventar, aktuellerSpieler)
                             }
+
                             else -> println("Falsche Eingabe! Der nächste Held ist an der Reihe.")
                         }
                     }
@@ -66,8 +67,9 @@ fun main() {
                             "4" -> aktuellerSpieler.zerschmettern(boss)
                             "i" -> {
                                 inventarZeigen(inventar)
-                                itemAuswahl(inventar,aktuellerSpieler)
+                                itemAuswahl(inventar, aktuellerSpieler)
                             }
+
                             else -> println("Falsche Eingabe! Der nächste Held ist an der Reihe.")
                         }
                     }
@@ -80,14 +82,15 @@ fun main() {
                             "4" -> aktuellerSpieler.heilung(charListe)
                             "i" -> {
                                 inventarZeigen(inventar)
-                                itemAuswahl(inventar,aktuellerSpieler)
+                                itemAuswahl(inventar, aktuellerSpieler)
                             }
+
                             else -> println("Falsche Eingabe! Der nächste Held ist an der Reihe.")
                         }
                     }
                 }
             }
-            if (boss.HP <=0){
+            if (boss.HP <= 0) {
                 break
             }
 
@@ -119,7 +122,7 @@ fun main() {
         // Runden Counter wird um 1 erhöht
         aktuelleRunde++
     }
-    if (boss.HP <= 0){
+    if (boss.HP <= 0) {
         println("Deine Helden haben gesiegt. Der Boss ist gefallen!")
     } else {
         println("Deine Helden sind Tod. Der Boss hat gewonnen!")

@@ -20,7 +20,7 @@ open class Boss(var name: String, var HP: Int, val bossMaxHP :Int) {
         val zufaelligerHeld = charList.random()
         zufaelligerHeld.HP -= schaden
         println("$name setzt ${::nahkampf.name.uppercase()} ein!")
-        println("$name hat ${zufaelligerHeld.name} $schaden schaden hinzugefügt")
+        println("$name hat ${zufaelligerHeld.name} ${red}$schaden schaden${black} hinzugefügt")
         println("${zufaelligerHeld.name} hat noch ${zufaelligerHeld.HP}")
     }
 
@@ -29,7 +29,7 @@ open class Boss(var name: String, var HP: Int, val bossMaxHP :Int) {
         val zufaelligerHeld = charList.random()
         zufaelligerHeld.HP -= schaden
         println("$name setzt ${::froststoß.name.uppercase()} ein!")
-        println("$name hat ${zufaelligerHeld.name} $schaden schaden hinzugefügt")
+        println("$name hat ${zufaelligerHeld.name} ${red}$schaden schaden${black} hinzugefügt")
         println("${zufaelligerHeld.name} hat noch ${zufaelligerHeld.HP}")
 
     }
@@ -38,7 +38,7 @@ open class Boss(var name: String, var HP: Int, val bossMaxHP :Int) {
         val heal = (150..400).random()
         println("$name setzt ${::heilung.name.uppercase()} ein")
         if (this.HP < this.bossMaxHP) {
-            println("Du wurdest um $heal geheilt!")
+            println("$name wurdest um ${green}$heal geheilt!${black}")
             boss.HP += heal
         } else {
             println("Dein Leben ist bereits voll.")

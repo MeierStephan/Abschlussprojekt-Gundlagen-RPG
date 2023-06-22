@@ -27,7 +27,7 @@ open class Warrior(name: String, HP: Int, maxHP:Int ) : Held(name, HP, maxHP) {
         val heal = schaden / 100 * 10
         println("${::blutdurst.name.uppercase()} wurde eingesetzt. Es macht ${red}$schaden Schaden ${black} gegen ${boss.name}")
         if (this.HP < this.maxHP) {
-            println("Du wurdest um $heal geheilt!")
+            println("Du wurdest um ${green}$heal geheilt!${black}")
             HP += heal
         } else {
             println("Dein Leben ist bereits voll.")

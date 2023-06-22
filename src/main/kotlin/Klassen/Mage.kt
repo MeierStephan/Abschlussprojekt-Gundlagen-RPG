@@ -1,9 +1,10 @@
 package Klassen
+
 import bossLP
 import minBossHP
 
 
-open class Mage(name: String, HP: Int,maxHP:Int) : Held(name, HP,maxHP) {
+open class Mage(name: String, HP: Int, maxHP: Int) : Held(name, HP, maxHP) {
     val red = "\u001B[31m"
     val green = "\u001B[32m"
     val black = "\u001B[0m"
