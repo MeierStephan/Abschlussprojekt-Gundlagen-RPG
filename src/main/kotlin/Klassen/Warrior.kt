@@ -1,12 +1,14 @@
 package Klassen
+
 import bossLP
 import minBossHP
 
-val red = "\u001B[31m"
-val green = "\u001B[32m"
-val black = "\u001B[0m"
 
 open class Warrior(name: String, HP: Int, maxHP:Int ) : Held(name, HP, maxHP) {
+    val red = "\u001B[31m"
+    val green = "\u001B[32m"
+    val black = "\u001B[0m"
+
 
     override fun zeigeAngriffe() {
         super.zeigeAngriffe()
@@ -20,8 +22,6 @@ open class Warrior(name: String, HP: Int, maxHP:Int ) : Held(name, HP, maxHP) {
         """.trimIndent()
         )
     }
-
-
     fun blutdurst(boss: Boss) {
         val schaden = (200..250).random()
         val heal = schaden / 100 * 10

@@ -1,7 +1,7 @@
 import Klassen.*
 import kotlin.math.roundToInt
 
-val red = "\u001B[31m"
+
 val green = "\u001B[32m"
 val black = "\u001B[0m"
 
@@ -14,9 +14,9 @@ fun bossLP(boss: Boss, schaden: Int) {
     println("Der ${boss.name} hat noch ${bossLebenInProzent.roundToInt()}%\n")
 }
 
-var buffMage = false
-var buffWarrior = false
-var buffPriest = false
+    var buffMage = false
+    var buffWarrior = false
+    var buffPriest = false
 fun itemBenutzen(item: Item, held: Held) {
     if (item.heilungsWert != null) {
         if (held.HP < held.maxHP) {
